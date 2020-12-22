@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".CategoryList1">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CATEGORY"
+        android:textSize="30sp"
+
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+
+        />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="23dp"
+        android:text="GENERAL"
+        android:textSize="29sp"
+        app:iconTint="#FFFFFF"
+        app:rippleColor="#FFFFFF" />
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ENTERTAINMENT"
+        android:textSize="28sp"
+
+        android:layout_marginBottom="23dp"
+        />
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BUSINESS"
+        android:textSize="28sp"
+        android:layout_marginBottom="23dp"
+        />
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="HEALTH"
+        android:textSize="28sp"
+        android:layout_marginBottom="23dp"
+        />
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SCIENCE"
+        android:textSize="28sp"
+        android:layout_marginBottom="23dp"
+        />
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TECHNOLOGY"
+        android:textSize="28sp"
+        android:layout_marginBottom="23dp"
+        />
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SPORTS"
+        android:textSize="28sp"
+        android:layout_marginBottom="23dp"
+        />
+</LinearLayout>
