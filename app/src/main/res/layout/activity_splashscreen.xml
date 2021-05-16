@@ -8,6 +8,9 @@
     <com.airbnb.lottie.LottieAnimationView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:lottie_url="https://assets1.lottiefiles.com/datafiles/98a3d0add75fc3c86f6d6f9b148c111e/Newspaper animation.json"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
 
      />
 </androidx.constraintlayout.widget.ConstraintLayout>
