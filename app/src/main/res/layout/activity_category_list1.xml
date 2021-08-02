@@ -14,13 +14,11 @@
         android:layout_height="wrap_content"
         android:text="CATEGORY"
         android:textSize="30sp"
-
         android:textStyle="bold"
         android:textColor="@color/black"
         android:textAlignment="center"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="30dp"
-
         />
 
     <Button
@@ -29,14 +27,19 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="23dp"
         android:text="GENERAL"
+        android:background="@drawable/button_state"
+        android:layout_margin="8dp"
         android:textSize="29sp"
-        app:iconTint="#FFFFFF"
+        app:iconTint="#FFF"
+
         app:rippleColor="#FFFFFF" />
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ENTERTAINMENT"
+        android:layout_margin="8dp"
+        android:background="@drawable/button_state"
         android:textSize="28sp"
 
         android:layout_marginBottom="23dp"
@@ -46,7 +49,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="BUSINESS"
+        android:background="@drawable/button_state"
         android:textSize="28sp"
+        android:layout_margin="8dp"
+
         android:layout_marginBottom="23dp"
         />
     <Button
@@ -54,23 +60,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="HEALTH"
+        android:background="@drawable/button_state"
         android:textSize="28sp"
         android:layout_marginBottom="23dp"
+        android:layout_margin="8dp"
         />
     <Button
         android:id="@+id/button5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SCIENCE"
+        android:background="@drawable/button_state"
         android:textSize="28sp"
         android:layout_marginBottom="23dp"
+        android:layout_margin="8dp"
         />
     <Button
         android:id="@+id/button6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TECHNOLOGY"
+        android:background="@drawable/button_state"
         android:textSize="28sp"
+        android:layout_margin="8dp"
         android:layout_marginBottom="23dp"
         />
     <Button
@@ -78,7 +90,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SPORTS"
+        android:layout_margin="8dp"
+        android:background="@drawable/button_state"
         android:textSize="28sp"
         android:layout_marginBottom="23dp"
+
+        />
+    <Button
+        android:id="@+id/Linkedin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+
+        android:drawableRight="@mipmap/linkedin_logo"
+        android:text="Connect with me on "
+        android:layout_marginTop="18dp"
         />
 </LinearLayout>

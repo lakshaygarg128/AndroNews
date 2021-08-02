@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".MainActivity">
+    <TextView
+        android:id="@+id/category_choosen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Topic"
+        android:textSize="25dp"
+        android:background="@color/purple_200"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Recyclerview"
@@ -14,6 +28,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/category_choosen"
         tools:ignore="InvalidId" />
 </androidx.constraintlayout.widget.ConstraintLayout>

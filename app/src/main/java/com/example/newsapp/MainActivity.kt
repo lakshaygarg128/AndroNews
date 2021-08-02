@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,11 +24,14 @@ import org.json.JSONObject
 class MainActivity() : AppCompatActivity(), itemclicked{
     private lateinit var  adapter :NewsAdapter
     var url = "https://saurav.tech/NewsAPI/top-headlines/category/entertainment/in.json"
+    var category = "Topic"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         checkurl()
+        val categoryChoosen :TextView = findViewById(R.id.category_choosen)
         val Recyclerview : RecyclerView = findViewById(R.id.Recyclerview)
+        categoryChoosen.text=category
         Recyclerview.layoutManager = LinearLayoutManager(this)
         fetchdata()
          adapter =NewsAdapter(this)
@@ -37,13 +41,34 @@ class MainActivity() : AppCompatActivity(), itemclicked{
     private fun checkurl() {
 val type =intent.getStringExtra("type")
         when (type) {
-            "1" -> url ="https://saurav.tech/NewsAPI/top-headlines/category/general/in.json"
-            "2" -> url ="https://saurav.tech/NewsAPI/top-headlines/category/entertainment/in.json"
-            "3" -> url ="https://saurav.tech/NewsAPI/top-headlines/category/business/in.json"
-            "4" -> url ="https://saurav.tech/NewsAPI/top-headlines/category/health/in.json"
-            "5" -> url ="https://saurav.tech/NewsAPI/top-headlines/category/science/in.json"
-            "6" -> url ="https://saurav.tech/NewsAPI/top-headlines/category/technology/in.json"
-            "7" -> url ="https://saurav.tech/NewsAPI/top-headlines/category/sports/in.json"
+            "1" -> {
+                url ="https://saurav.tech/NewsAPI/top-headlines/category/general/in.json"
+                category = "General"
+            }
+            "2" -> {
+                url ="https://saurav.tech/NewsAPI/top-headlines/category/entertainment/in.json"
+                category = "Entertainment"
+            }
+            "3" -> {
+                url ="https://saurav.tech/NewsAPI/top-headlines/category/business/in.json"
+                category = "Business"
+            }
+            "4" -> {
+                url = "https://saurav.tech/NewsAPI/top-headlines/category/health/in.json"
+                category = "Health"
+            }
+            "5" -> {
+                url ="https://saurav.tech/NewsAPI/top-headlines/category/science/in.json"
+                category = "Science"
+            }
+            "6" -> {
+                url ="https://saurav.tech/NewsAPI/top-headlines/category/technology/in.json"
+                category = "Technology And Gadgets"
+            }
+            "7" -> {
+                url ="https://saurav.tech/NewsAPI/top-headlines/category/sports/in.json"
+                category = "Sports"
+            }
             else -> { // Note the block
 
             }

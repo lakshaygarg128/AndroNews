@@ -1,9 +1,11 @@
 package com.example.newsapp
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.browser.customtabs.CustomTabsIntent
 
 class CategoryList1() : AppCompatActivity() {
     var count : String=""
@@ -18,6 +20,14 @@ class CategoryList1() : AppCompatActivity() {
         val button5 : Button = findViewById(R.id.button5)
         val button6 : Button = findViewById(R.id.button6)
         val button7 : Button = findViewById(R.id.button7)
+        val Linkedin : Button = findViewById(R.id.Linkedin)
+        Linkedin.setOnClickListener{
+
+            val url = "https://www.linkedin.com/in/lakshay-garg-56b37718a/"
+            val builder =  CustomTabsIntent.Builder();
+            val customTabsIntent = builder.build();
+            customTabsIntent.launchUrl(this, Uri.parse(url));
+        }
         button1.setOnClickListener{
             intent.putExtra("type","1")
             startActivity(intent)

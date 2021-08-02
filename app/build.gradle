@@ -8,6 +8,7 @@ android {
     buildToolsVersion "30.0.0"
 
     defaultConfig {
+        vectorDrawables.useSupportLibrary = true
         applicationId "com.example.newsapp"
         minSdkVersion 22
         targetSdkVersion 30
