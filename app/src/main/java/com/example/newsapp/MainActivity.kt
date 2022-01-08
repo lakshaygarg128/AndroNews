@@ -1,39 +1,49 @@
 package com.example.newsapp
 
-import android.app.DownloadManager
-import android.app.VoiceInteractor
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.LinearLayout
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.android.volley.Request
-import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import org.json.JSONObject
+import com.example.newsapp.models.Article
+import com.example.newsapp.repository.NewsRepository
+import com.example.newsapp.viewmodels.MainViewModel
+import com.example.newsapp.viewmodels.MainViewModelFactory
 
 class MainActivity() : AppCompatActivity(), itemclicked{
+    lateinit var viewmodel : MainViewModel
     private lateinit var  adapter :NewsAdapter
     var url = "https://saurav.tech/NewsAPI/top-headlines/category/entertainment/in.json"
-    var category = "Topic"
+    var category = "general"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        checkurl()
+
+        val repository=NewsRepository()
+        viewmodel = ViewModelProvider(this,
+            MainViewModelFactory(repository))
+            .get(MainViewModel::class.java)
+            checkurl()
         val categoryChoosen :TextView = findViewById(R.id.category_choosen)
         val Recyclerview : RecyclerView = findViewById(R.id.Recyclerview)
         categoryChoosen.text=category
         Recyclerview.layoutManager = LinearLayoutManager(this)
-        fetchdata()
+        viewmodel.getNews(category)
+        viewmodel.all_News_Response.observe(this, Observer {
+           Log.d("Response", it.body()!!.articles[0].title)
+            adapter.updatenews(it.body()!!.articles as ArrayList<Article>)
+        })
+
          adapter =NewsAdapter(this)
         Recyclerview.adapter=adapter
     }
@@ -42,81 +52,36 @@ class MainActivity() : AppCompatActivity(), itemclicked{
 val type =intent.getStringExtra("type")
         when (type) {
             "1" -> {
-                url ="https://saurav.tech/NewsAPI/top-headlines/category/general/in.json"
-                category = "General"
+                category = "general"
             }
             "2" -> {
-                url ="https://saurav.tech/NewsAPI/top-headlines/category/entertainment/in.json"
-                category = "Entertainment"
+                category = "entertainment"
             }
             "3" -> {
-                url ="https://saurav.tech/NewsAPI/top-headlines/category/business/in.json"
-                category = "Business"
+                category = "business"
             }
             "4" -> {
-                url = "https://saurav.tech/NewsAPI/top-headlines/category/health/in.json"
-                category = "Health"
+                category = "health"
             }
             "5" -> {
-                url ="https://saurav.tech/NewsAPI/top-headlines/category/science/in.json"
-                category = "Science"
+                category = "science"
             }
             "6" -> {
-                url ="https://saurav.tech/NewsAPI/top-headlines/category/technology/in.json"
-                category = "Technology And Gadgets"
+                category = "technology"
             }
             "7" -> {
-                url ="https://saurav.tech/NewsAPI/top-headlines/category/sports/in.json"
-                category = "Sports"
+                category = "sports"
             }
-            else -> { // Note the block
+            else -> {
 
             }
         }
     }
-
-    private fun fetchdata() {
-    val queue = Volley.newRequestQueue(this)
-
-
-// Request a string response from the provided URL.
-    val JsonObject = JsonObjectRequest(Request.Method.GET, url,null,
-           Response.Listener {
-                             val jsonObjectaraay = it.getJSONArray("articles")
-               val newsarray = ArrayList<News>()
-               for(i in 0 until jsonObjectaraay.length())
-               {
-                   val jsonObject = jsonObjectaraay.getJSONObject(i)
-                   val news = News(
-                           jsonObject.getString("title")
-                   ,jsonObject.getString("author")
-                   ,jsonObject.getString("url")
-                   ,jsonObject.getString("urlToImage")
-                   )
-                   newsarray.add(news)
-               }
-                  adapter.updatenews(newsarray)
-
-           },
-            {
-                   Toast.makeText(this,"(${it})",Toast.LENGTH_LONG).show()
-            })
-    queue.add(JsonObject)
-
-
-
-
-}
-
-
-
-    override fun onitemclicked(item: News) {
+    override fun onitemclicked(item: Article) {
         val url = item.url
         val builder =  CustomTabsIntent.Builder();
         val customTabsIntent = builder.build();
         customTabsIntent.launchUrl(this, Uri.parse(url));
     }
-
-
 
 }

@@ -1,17 +1,16 @@
 package com.example.newsapp
 
 import android.view.LayoutInflater
-import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import java.util.zip.Inflater
+import com.example.newsapp.models.Article
 
 class NewsAdapter (private val listner :itemclicked): RecyclerView.Adapter<NewsViewHolder>() {
-    var items : ArrayList<News> = ArrayList()
+    var items : ArrayList<Article> = ArrayList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
 
         val view = LayoutInflater.from(parent.context).inflate(R.layout.newsitem,parent,false)
@@ -25,7 +24,7 @@ class NewsAdapter (private val listner :itemclicked): RecyclerView.Adapter<NewsV
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
       val currentitem  =items[position]
         holder.title.text= currentitem.title
-        Glide.with(holder.itemView.context).load(currentitem.imageurl).into(holder.image)
+        Glide.with(holder.itemView.context).load(currentitem.urlToImage).into(holder.image)
         holder.author.text = currentitem.author
     }
 
@@ -33,7 +32,7 @@ class NewsAdapter (private val listner :itemclicked): RecyclerView.Adapter<NewsV
     val count =items.size
         return count
     }
-    fun updatenews (updated : ArrayList<News>){
+    fun updatenews (updated : ArrayList<Article>){
         items.clear()
         items.addAll(updated)
         notifyDataSetChanged()
@@ -47,5 +46,5 @@ val title : TextView = itemView.findViewById(R.id.Title)
     val author :TextView = itemView.findViewById(R.id.author)
 }
 interface itemclicked {
-fun onitemclicked(item :News)
+fun onitemclicked(item: Article)
 }
