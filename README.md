@@ -1,5 +1,5 @@
 # AndroNews
-APK ==>  https://drive.google.com/drive/u/0/folders/1Ts5_q3hxEZsappV_S6IiueO_eK5O_oVN
+APK ==>  https://drive.google.com/file/d/1OuLDrChsTwzt8_3Km-bYCVMwaGAcSeQe/view?usp=sharing
 
 
 ![WhatsApp Image 2021-10-07 at 20 41 00 (1)](https://user-images.githubusercontent.com/55504132/136413275-19384cd2-1c31-4c59-b7fd-900f316873dd.jpeg)
