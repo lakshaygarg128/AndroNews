@@ -23,17 +23,20 @@ import com.example.newsapp.viewmodels.MainViewModelFactory
 class MainActivity() : AppCompatActivity(), itemclicked{
     lateinit var viewmodel : MainViewModel
     private lateinit var  adapter :NewsAdapter
-    var url = "https://saurav.tech/NewsAPI/top-headlines/category/entertainment/in.json"
     var category = "general"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val repository=NewsRepository()
+
         viewmodel = ViewModelProvider(this,
             MainViewModelFactory(repository))
             .get(MainViewModel::class.java)
+
             checkurl()
+
         val categoryChoosen :TextView = findViewById(R.id.category_choosen)
         val Recyclerview : RecyclerView = findViewById(R.id.Recyclerview)
         categoryChoosen.text=category
