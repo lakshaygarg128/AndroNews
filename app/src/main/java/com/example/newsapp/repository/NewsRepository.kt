@@ -10,7 +10,7 @@ import retrofit2.Response
 class NewsRepository() {
 
 
-    suspend fun getnews(category: String  ):Response<NewsList>{
+    suspend fun getnews(category: String):Response<NewsList>{
         return retrofithelper.instance.getNews("in",category)
     }
 }

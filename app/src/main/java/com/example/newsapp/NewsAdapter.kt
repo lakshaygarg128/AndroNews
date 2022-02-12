@@ -26,6 +26,7 @@ class NewsAdapter (private val listner :itemclicked): RecyclerView.Adapter<NewsV
         holder.title.text= currentitem.title
         Glide.with(holder.itemView.context).load(currentitem.urlToImage).into(holder.image)
         holder.author.text = currentitem.author
+
     }
 
     override fun getItemCount(): Int {
